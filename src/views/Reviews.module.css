@@ -1,0 +1,31 @@
+.list {
+  margin-bottom: 20px;
+  list-style: none;
+}
+
+.item {
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #f0ffff;
+}
+.item:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.title {
+  font-weight: 700;
+  color: black;
+  font-size: 24px;
+}
+
+.content {
+  font-weight: 500;
+  color: black;
+  font-size: 18px;
+  padding: 5px;
+}
+
+.error {
+  color: rgb(252, 0, 0);
+  font-weight: 700;
+}

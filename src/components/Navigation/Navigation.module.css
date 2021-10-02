@@ -1,0 +1,22 @@
+.link {
+  display: inline-block;
+  text-decoration: none;
+  padding: 20px;
+  font-weight: 700;
+  color: black;
+  font-size: 20px;
+  border: 1 px solid red;
+}
+
+.activeLink {
+  color: #028f09;
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+.error {
+  color: red;
+  display: flex;
+  justify-content: center;
+}

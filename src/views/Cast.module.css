@@ -1,0 +1,41 @@
+.list {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  margin-left: -20px;
+  margin-top: -20px;
+  margin-bottom: 20px;
+}
+
+.item {
+  flex-basis: calc(100% / 10 - 20px);
+  margin-left: 20px;
+  margin-top: 15px;
+}
+
+.img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.name {
+  text-align: center;
+  text-decoration: none;
+  font-weight: 500;
+  color: black;
+  font-size: 16px;
+  padding: 5px;
+}
+
+.character {
+  text-align: center;
+  font-weight: 500;
+  padding-left: 5px;
+}
+
+.error {
+  color: rgb(252, 0, 0);
+  font-weight: 700;
+}
