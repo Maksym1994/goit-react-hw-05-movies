@@ -1,21 +1,16 @@
 import { lazy, Suspense } from 'react';
 import { useEffect, useState } from 'react';
-import { useParams, useLocation, useHistory, Route, useRouteMatch} from 'react-router-dom';
-import * as getMoviesApi from 'services/getMoviesApi'
+import { useParams, useHistory, Route, useRouteMatch } from 'react-router-dom';
+import * as getMoviesApi from 'services/getMoviesApi';
 import Spinner from 'components/Loader/Loader';
 
-const GoBackButton = lazy(() =>
-import('components/GoBackButton/GoBackButton'),
-);
-const Movie = lazy(() =>
-  import('components/Movie/Movie'),
-);
+const GoBackButton = lazy(() => import('components/GoBackButton/GoBackButton'));
+const Movie = lazy(() => import('components/Movie/Movie'));
 const Cast = lazy(() => import('views/Cast'));
 const Reviews = lazy(() => import('views/Reviews'));
 
 export default function MovieDetails() {
   const history = useHistory();
-  const location = useLocation();
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const { path } = useRouteMatch();
@@ -24,17 +19,13 @@ export default function MovieDetails() {
     getMoviesApi.fetchMovieById(movieId).then(setMovie);
   }, [movieId]);
 
-  const handleGoBack = () => {
-    history.push(location?.state?.from?.location ?? '/');
-  };
-  return <>
+  return (
+    <>
+      <GoBackButton onClick={() => history.goBack()} />
 
-  <GoBackButton onBack={handleGoBack} />
+      {movie && <Movie movie={movie} />}
 
-  {movie && <Movie movie={movie} />}
-
-  <Suspense fallback={<Spinner/>}
-      >
+      <Suspense fallback={<Spinner />}>
         <Route path={`${path}/cast`}>
           <Cast movieId={movieId} />
         </Route>
@@ -43,6 +34,6 @@ export default function MovieDetails() {
           <Reviews movieId={movieId} />
         </Route>
       </Suspense>
-  
-  </>;
+    </>
+  );
 }
